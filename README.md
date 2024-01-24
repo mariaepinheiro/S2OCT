@@ -11,3 +11,16 @@ Decision trees are one of the most famous methods for solving classification pro
 - Datasets (instruction to obtain the data)
 
 # How to use the Semi-Supervised Optimal Classification Trees
+  Semi-Supervised Optimal Classification Trees need the following entrance value:
+ Xl: Labeled points such that the first ma points belong to class $\mathcal{A}$.
+ Xu: Unlabeled points
+ ma: number of labeled points that belong to class $\mathcal{A}$.
+ τ: how many unlabeled points belong to class $\mathcal{A}$.
+ p: deep of the tree.
+ C: penalty parameter.
+ M: Big M value.
+ maxtime: time limit.
+ bd: bound of $\omega$
+ 
+# How to use the Optimal Classification Trees
+ Optimal Classification Trees are proposed by Bertsimas and Dunn (https://link.springer.com/article/10.1007/s10994-017-5633-9).
