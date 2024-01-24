@@ -184,18 +184,18 @@ function comparing(P1,Y1,s,g,MCnum,M1,D,R,bd,p0,TY==0)
         println("comparing $i finished")
     end
     TP = [TP1 TP2 TP1u TP2u]
-    CSV.write("DecisionTree/results/$T/TruePositive$D.csv",DataFrame(TP,:auto))
+    CSV.write("results/$T/TruePositive$D.csv",DataFrame(TP,:auto))
 
     TN = [TN1 TN2 TN1u TN2u]
-    CSV.write("DecisionTree/results/$T/TrueNegative$D.csv",DataFrame(TN,:auto))
+    CSV.write("results/$T/TrueNegative$D.csv",DataFrame(TN,:auto))
 
     FP = [FP1 FP2 FP1u FP2u]
-    CSV.write("DecisionTree/results/$T/FalsePositive$D.csv",DataFrame(FP,:auto))
+    CSV.write("results/$T/FalsePositive$D.csv",DataFrame(FP,:auto))
     
     FN = [FN1 FN2 FN1u FN2u]
-    CSV.write("DecisionTree/results/$T/FalseNegative$D.csv",DataFrame(FN,:auto))
+    CSV.write("results/$T/FalseNegative$D.csv",DataFrame(FN,:auto))
     t = [ti1 ti2]
-    CSV.write("DecisionTree/results/$T/TIMEs$D.csv",DataFrame(t,:auto))
+    CSV.write("results/$T/TIMEs$D.csv",DataFrame(t,:auto))
     
 
 end
