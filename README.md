@@ -24,7 +24,7 @@ S2OCT return the hyperplanes, the objective function and the classification of t
 - C: penalty parameter:  number between 0.5 and 2.
 - M: Big M value: η*s*\sqrt{p}+1 where η is the maximum distance between two points in [Xl Xu]
 - maxtime: time limit,
- -s: bound of ω.
+ - s: bound of ω,
 - solver: By default we use solver=1, which means we are using Gurobi. For that, it is necessary a Gurobi license. If choose any different value, SCIP is used.
  
 # How to use the Optimal Classification Trees
