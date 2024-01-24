@@ -10,7 +10,7 @@ function S2OCT(Xl,Xu,ma,τ,D,C,M,maxtime,s) ###Xl: first ma belongs to A.
     set_silent(model)
     set_optimizer_attribute(model, "MIPFocus", 1)
     d0 = 0
-    @variable(model, -bd≤ w[i=1:n,d=d0+1:ρ]≤bd)#,start = w1[i,d])
+    @variable(model, -s≤ w[i=1:n,d=d0+1:ρ]≤s)#,start = w1[i,d])
     @variable(model, γ[d=d0+1:ρ])# ,start)= γ1[d])
     @variable(model, α[1:ml,1:p2],Bin)
     @variable(model, 0 ≤ β[1:ml,1:p2])
