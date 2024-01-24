@@ -21,3 +21,10 @@ number of points in each class for a binary classification. Our numerical result
 show that our approach leads to a better accuracy and a better Matthews cor-
 relation coefficient for biased samples compared to other optimal classification
 trees, even if only few labeled points are available
+
+# Preliminary needed tools
+
+- Gurobi (link to installation guide)
+- Datasets (instruction to obtain the data)
+
+# How to use the Semi-Supervised Optimal Classification Trees
