@@ -1,5 +1,5 @@
 module S2OCT
-
+export S2OCT
 ##S2OCT is a semi-supervised classification tree proposed by Jan Pablo Burgard, Maria Eduarda Pinheiro, Martin Schmidt avaliable in https://arxiv.org/abs/2401.09848
 
 ##S2OCT return the hyperplanes, the objective function and the classification of the unlabeled data
