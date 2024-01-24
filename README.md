@@ -7,10 +7,11 @@ Decision trees are one of the most famous methods for solving classification pro
 
 # Preliminary needed tools
 
-- Gurobi (link to installation guide)
-- Datasets (instruction to obtain the data)
+- Gurobi: https://juliapackages.com/p/gurobi
+
 
 # How to use the Semi-Supervised Optimal Classification Trees
+S2OCT return the hyperplanes, the objective function and the classification of the unlabeled data
   Semi-Supervised Optimal Classification Trees need the following entrance value:
   
  - Xl: Labeled points such that the first ma points belong to class $\mathcal{A}$.
