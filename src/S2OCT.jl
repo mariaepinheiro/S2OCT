@@ -1,5 +1,7 @@
 module S2OCT
-export S2OCT
+using Gurobi, JuMP, LinearAlgebra
+export S2OCTf
+
 ##S2OCT is a semi-supervised classification tree proposed by Jan Pablo Burgard, Maria Eduarda Pinheiro, Martin Schmidt avaliable in https://arxiv.org/abs/2401.09848
 
 ##S2OCT return the hyperplanes, the objective function and the classification of the unlabeled data
@@ -15,8 +17,7 @@ export S2OCT
 #M: Big M value: η*s*\sqrt{p}+1 where η is the maximum distance between two points in [Xl Xu]
 #maxtime: time limit,
 #s: bound of ω.
-using Gurobi, JuMP, LinearAlgebra
-function S2OCT(Xl,Xu,ma,τ,D,C,M,maxtime,s)
+function S2OCTf(Xl,Xu,ma,τ,D,C,M,maxtime,s)
     ρ = 2^D -1
     p1 = 2^D
     p2 = Int64(p1/2)
@@ -89,3 +90,4 @@ end
 
 
 end # module
+
