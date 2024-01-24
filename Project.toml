@@ -1,0 +1,9 @@
+name = "S2OCT"
+uuid = "24d0616a-6aca-4423-8772-df42d8600bfd"
+authors = ["Maria Eduarda Pinheiro pinheiro@uni-trier.de"]
+version = "0.1.0"
+
+[deps]
+Gurobi = "2e9cd046-0924-5485-92f1-d5272153d98b"
+JuMP = "4076af6c-e467-56ae-b986-b466b2749572"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
