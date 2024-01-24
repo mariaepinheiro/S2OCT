@@ -14,15 +14,21 @@ Decision trees are one of the most famous methods for solving classification pro
 S2OCT return the hyperplanes, the objective function and the classification of the unlabeled data
   Semi-Supervised Optimal Classification Trees need the following entrance value:
   
- - Xl: Labeled points such that the first ma points belong to class $\mathcal{A}$.
- - Xu: Unlabeled points
- - ma: number of labeled points that belong to class $\mathcal{A}$.
- - τ: how many unlabeled points belong to class $\mathcal{A}$.
- - D: deep of the tree.
- - C: penalty parameter.
- - M: Big M value.
- - maxtime: time limit.
- - s: bound of $\omega$
+
+##S2OCT return the hyperplanes, the objective function and the classification of the unlabeled data
+
+## arguments:
+#Xl: Labeled points such that the first ma points belong to class A,
+#Xu: Unlabeled points,
+## all points belong to R^p
+#ma: number of labeled points that belong to class A,
+#τ: how many unlabeled points belong to class A,
+#D: deep of the tree: integer number between 2 and 5
+#C: penalty parameter:  number between 0.5 and 2.
+#M: Big M value: η*s*\sqrt{p}+1 where η is the maximum distance between two points in [Xl Xu]
+#maxtime: time limit,
+#s: bound of ω.
+#solver_ By default we use solver=1, which means we are using Gurobi. For that, it is necessary a Gurobi license. If choose any different value, SCIP is used.
  
 # How to use the Optimal Classification Trees
- Optimal Classification Trees are proposed by Bertsimas and Dunn (https://link.springer.com/article/10.1007/s10994-017-5633-9).
+ [Optimal Classification Trees](https://link.springer.com/article/10.1007/s10994-017-5633-9) is proposed by Bertsimas and Dunn and only considers labeled data.
