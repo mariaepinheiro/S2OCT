@@ -8,7 +8,7 @@ Decision trees are one of the most famous methods for solving classification pro
 # Preliminary needed tools
 
 - Gurobi: https://juliapackages.com/p/gurobi
-
+- S2OCT.jl package: https://github.com/mariaepinheiro/S2OCT.jl
 
 # How to use the Semi-Supervised Optimal Classification Trees
 S2OCT return the hyperplanes, the objective function and the classification of the unlabeled data
