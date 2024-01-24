@@ -6,11 +6,12 @@ using Gurobi,JuMP,LinearAlgebra
 ## arguments:
 #Xl: Labeled points such that the first ma points belong to class A,
 #Xu: Unlabeled points,
+## all points belong to R^p
 #ma: number of labeled points that belong to class A,
 #τ: how many unlabeled points belong to class A,
 #D: deep of the tree: integer number between 2 and 5
 #C: penalty parameter:  
-#M: Big M value,
+#M: Big M value: η*s*\sqrt{p}+1 where η is the maximum distance between two points in [Xl Xu]
 #maxtime: time limit,
 #s: bound of ω.
 
@@ -70,9 +71,9 @@ function S2OCT(Xl,Xu,ma,τ,D,C,M,maxtime,s)
     @constraint(model, [ix=1:mu,d=1:ρ], dot(w[:,d],Xu[ix,:]) -γ[d] ≤  -1 +zg[ix,d]*M)
     @constraint(model, [ix=1:mu,d=1:ρ], dot(w[:,d],Xu[ix,:]) -γ[d] ≥ 1 -(1-zg[ix,d])*M)
     @constraint(model, [j=1:ml], sum(α[j,:]) == 1)
-    @constraint(model, [i=1:ml,j = 1:p2], β[i,j] ≤ (M*p)*α[i,j])
+    @constraint(model, [i=1:ml,j = 1:p2], β[i,j] ≤ (M*D)*α[i,j])
     @constraint(model, [i=1:ml,j = 1:p2], β[i,j] ≤ LE[i,j])
-    @constraint(model, [i=1:ml,j = 1:p2], β[i,j] ≥ LE[i,j] - (M*p)*(1-α[i,j]))
+    @constraint(model, [i=1:ml,j = 1:p2], β[i,j] ≥ LE[i,j] - (M*D)*(1-α[i,j]))
     @constraint(model, sum(δ)≤ τ+ξ)
     @constraint(model, sum(δ)≥ τ-ξ)
     @objective(model, Min, sum(β) + C*(sum(ξ)))
