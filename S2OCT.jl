@@ -1,5 +1,20 @@
 using Gurobi,JuMP,LinearAlgebra
-function S2OCT(Xl,Xu,ma,τ,D,C,M,maxtime,s) ###Xl: first ma belongs to A.
+##S2OCT is a semi-supervised classification tree proposed by Jan Pablo Burgard, Maria Eduarda Pinheiro, Martin Schmidt avaliable in https://arxiv.org/abs/2401.09848
+
+##S2OCT return the hyperplanes, the objective function and the classification of the unlabeled data
+
+## arguments:
+#Xl: Labeled points such that the first ma points belong to class A,
+#Xu: Unlabeled points,
+#ma: number of labeled points that belong to class A,
+#τ: how many unlabeled points belong to class A,
+#D: deep of the tree: integer number between 2 and 5
+#C: penalty parameter:  
+#M: Big M value,
+#maxtime: time limit,
+#s: bound of ω.
+
+function S2OCT(Xl,Xu,ma,τ,D,C,M,maxtime,s)
     ρ = 2^D -1
     p1 = 2^D
     p2 = Int64(p1/2)
@@ -9,9 +24,8 @@ function S2OCT(Xl,Xu,ma,τ,D,C,M,maxtime,s) ###Xl: first ma belongs to A.
     set_time_limit_sec(model,maxtime)
     set_silent(model)
     set_optimizer_attribute(model, "MIPFocus", 1)
-    d0 = 0
-    @variable(model, -s≤ w[i=1:n,d=d0+1:ρ]≤s)#,start = w1[i,d])
-    @variable(model, γ[d=d0+1:ρ])# ,start)= γ1[d])
+    @variable(model, -s≤ w[i=1:n,d=1:ρ]≤s)#,start = w1[i,d])
+    @variable(model, γ[d=1:ρ])# ,start)= γ1[d])
     @variable(model, α[1:ml,1:p2],Bin)
     @variable(model, 0 ≤ β[1:ml,1:p2])
     @variable(model, yℓ[1:ml,1:ρ] ≥ 0)
@@ -51,10 +65,10 @@ function S2OCT(Xl,Xu,ma,τ,D,C,M,maxtime,s) ###Xl: first ma belongs to A.
         @constraint(model, [j=1:mu], δ[j,i] ≥ sum(zℓ[j,AL[2i-1]]) + sum(zg[j,AR[2i-1]])-(p-1))
     end
    
-    @constraint(model, [i=1:ml,d=d0+1:ρ], dot(w[:,d],Xl[i,:]) - γ[d] + 1≤ yℓ[i,d])
-    @constraint(model, [i=1:ml,d=d0+1:ρ], -dot(w[:,d],Xl[i,:]) + γ[d]+1 ≤ yg[i,d] )
-    @constraint(model, [ix=1:mu,d=d0+1:ρ], dot(w[:,d],Xu[ix,:]) -γ[d] ≤  -1 +zg[ix,d]*M)
-    @constraint(model, [ix=1:mu,d=d0+1:ρ], dot(w[:,d],Xu[ix,:]) -γ[d] ≥ 1 -(1-zg[ix,d])*M)
+    @constraint(model, [i=1:ml,d=1:ρ], dot(w[:,d],Xl[i,:]) - γ[d] + 1≤ yℓ[i,d])
+    @constraint(model, [i=1:ml,d=1:ρ], -dot(w[:,d],Xl[i,:]) + γ[d]+1 ≤ yg[i,d] )
+    @constraint(model, [ix=1:mu,d=1:ρ], dot(w[:,d],Xu[ix,:]) -γ[d] ≤  -1 +zg[ix,d]*M)
+    @constraint(model, [ix=1:mu,d=1:ρ], dot(w[:,d],Xu[ix,:]) -γ[d] ≥ 1 -(1-zg[ix,d])*M)
     @constraint(model, [j=1:ml], sum(α[j,:]) == 1)
     @constraint(model, [i=1:ml,j = 1:p2], β[i,j] ≤ (M*p)*α[i,j])
     @constraint(model, [i=1:ml,j = 1:p2], β[i,j] ≤ LE[i,j])
@@ -70,5 +84,3 @@ function S2OCT(Xl,Xu,ma,τ,D,C,M,maxtime,s) ###Xl: first ma belongs to A.
    
     return w,γ,fun, labelclass
 end
-
-
