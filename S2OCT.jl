@@ -31,7 +31,7 @@ function S2OCT(Xl,Xu,ma,τ,D,C,M,maxtime,s)
     @variable(model, yℓ[1:ml,1:ρ] ≥ 0)
     @variable(model, yg[1:ml,1:ρ] ≥ 0)
     @variable(model, zg[1:mu,1:ρ], Bin)
-    @variable(model, δ[1:mu,1:D2], Bin)
+    @variable(model, δ[1:mu,1:p2], Bin)
     @variable(model, ξ≥0)
     @expression(model, zℓ[i=1:mu,j= 1:ρ], -zg[i,j] +1) 
     
@@ -62,7 +62,7 @@ function S2OCT(Xl,Xu,ma,τ,D,C,M,maxtime,s)
             for k ∈ AR[2i-1]
                 @constraint(model, [j=1:mu], δ[j,i] ≤ zg[j,k])
             end
-        @constraint(model, [j=1:mu], δ[j,i] ≥ sum(zℓ[j,AL[2i-1]]) + sum(zg[j,AR[2i-1]])-(p-1))
+        @constraint(model, [j=1:mu], δ[j,i] ≥ sum(zℓ[j,AL[2i-1]]) + sum(zg[j,AR[2i-1]])-(D-1))
     end
    
     @constraint(model, [i=1:ml,d=1:ρ], dot(w[:,d],Xl[i,:]) - γ[d] + 1≤ yℓ[i,d])
