@@ -15,7 +15,7 @@ export S2OCT
 #M: Big M value: η*s*\sqrt{p}+1 where η is the maximum distance between two points in [Xl Xu]
 #maxtime: time limit,
 #s: bound of ω.
-
+using Gurobi, JuMP, LinearAlgebra
 function S2OCT(Xl,Xu,ma,τ,D,C,M,maxtime,s)
     ρ = 2^D -1
     p1 = 2^D
