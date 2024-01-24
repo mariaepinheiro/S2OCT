@@ -1,6 +1,6 @@
 # Mixed-Integer Linear Optimization for Semi-Supervised Optimal Classification Trees
 
-This repository contains all the information needed to reproduce the results for the paper (Mixed-Integer Linear Optimization for Semi-Supervised Optimal Classification Trees)[https://arxiv.org/abs/2401.09848] authored by Jan Pablo Burgard, Maria Eduarda Pinheiro, Martin Schmidt.
+This repository contains all the information needed to reproduce the results for the paper [Mixed-Integer Linear Optimization for Semi-Supervised Optimal Classification Trees](https://arxiv.org/abs/2401.09848) authored by Jan Pablo Burgard, Maria Eduarda Pinheiro, Martin Schmidt.
 
 # Abstract
 Decision trees are one of the most famous methods for solving
