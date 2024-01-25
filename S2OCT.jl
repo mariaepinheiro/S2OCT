@@ -1,1 +1,1 @@
-add https://github.com/mariaepinheiro/S2OCT.jl.git
+add https://github.com/mariaepinheiro/OptimalClassificationTrees.jl.git
