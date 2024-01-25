@@ -145,7 +145,7 @@ function comparing(P1,Y1,s,g,MCnum,M1,D,R,bd,p0,B==0)
             end
         end
         ########S²OCT 
-        t2 = @elapsed  H2 = S2OCTf(XAB,X1,ma,τA,p0,1,bd*sqrt(M1)*R+1,7200,bd)
+        t2 = @elapsed  H2 = S2OCT(XAB,X1,ma,τA,p0,1,bd*sqrt(M1)*R+1,7200,bd)
         ti2[i] = t2
         for j = 1:ma
            ac = check(XAB[j,:],H2[1],H2[2],p0)
