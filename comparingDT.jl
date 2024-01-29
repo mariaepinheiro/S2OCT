@@ -54,7 +54,7 @@ function check(x,w,γ,n=2)
     return ac
 end
 
-function comparing(P1,Y1,s,g,MCnum,M1,D,R,bd,p0,B==0)
+function comparing(P1,Y1,s,g,MCnum,M1,D,R,bd,p0,B=0)
     rng = MersenneTwister(70)
     S = Vector{Vector{Int32}}(undef,MCnum) 
     if B==1 # sample under simple sample
