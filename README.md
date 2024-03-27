@@ -13,7 +13,7 @@ Decision trees are one of the most famous methods for solving classification pro
 # How to use the Semi-Supervised Optimal Classification Trees
 S2OCT return the hyperplanes, the objective function and the classification of the unlabeled data
 Semi-Supervised Optimal Classification Trees need the following entrance value:
-S2OCT return the hyperplanes, the objective function and the classification of the unlabeled data
+
 
 ## arguments:
 - Xl: Labeled points such that the first ma points belong to class \mathcal{A},
